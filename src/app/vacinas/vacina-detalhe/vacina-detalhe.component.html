@@ -1,0 +1,49 @@
+<div class="container col-md-6">
+  <h3 class="mt-4">Cadastro de Vacinas</h3>
+
+  <div>
+    <form class=" mt-4">
+      <div class="mb-3">
+        <label for="nome" class="form-label">Nome da Vacina</label>
+        <input type="text" id="nome" class="form-control" name="nome" [(ngModel)]="vacina.nome">
+      </div>
+
+      <div class="mb-3">
+        <label for="pais" class="form-label">País de origem</label>
+        <select class="form-control" name="nomePais" [compareWith]="compareById" [(ngModel)]="vacina.pais">
+          @for(p of paises; track p.id) {
+          <option [ngValue]=" p ">{{ p.nome }} ({{ p.sigla }})</option>
+          }
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="pesquisador" class="form-label">Pesquisador responsável</label>
+        <select class="form-control" name="pesquisador" [compareWith]="compareById"
+          [(ngModel)]="vacina.pesquisadorResponsavel">
+          @for(pesq of pesquisadores; track pesq.id) {
+          <option [ngValue]="pesq"> {{ pesq.nome }} </option>
+          }
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="estagio" class="form-label">Estágio</label>
+        <input type="text" class="form-control" name="estagio" [(ngModel)]="vacina.estagio">
+      </div>
+
+      <div class="mb-3">
+        <label for="inicioPesquisa" class="form-label">Início da Pesquisa</label>
+        <input type="date" class="form-control" name="inicioPesquisa" [(ngModel)]="vacina.dataInicioPesquisa">
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <button type="submit" class="btn btn-outline-success col-md-3" (click)="salvarNovaVacina()">Salvar</button>
+          &nbsp;
+          <a class="btn btn-outline-dark col-md-3" role="button" aria-pressed="true" href="/vacina"> Voltar</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
