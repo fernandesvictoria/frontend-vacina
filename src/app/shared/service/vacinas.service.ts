@@ -23,7 +23,7 @@ export class VacinasService {
   }
 
   consultarVacinaID(idVacina: number): Observable<Vacina> {
-    return this.httpClient.get<Vacina>(this.API + '/consultar' + idVacina )
+    return this.httpClient.get<Vacina>(this.API + '/consultar/' + idVacina )
   }
 
   excluir (vacinaId: number): Observable<boolean> {
