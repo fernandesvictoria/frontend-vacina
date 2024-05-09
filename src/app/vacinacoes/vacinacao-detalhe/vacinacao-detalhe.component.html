@@ -1,0 +1,49 @@
+<div class="container col-md-6">
+  <h3 class="mt-4">Cadastro de Vacinações</h3>
+
+  <div>
+    <form class="mt-4">
+      <div class="mb-3">
+        <label for="nomePessoa" class="form-label">Nome do vacinado</label>
+        <select class="form-control" name="nomePessoa" [(ngModel)]="vacinacao.pessoa">
+          @for(p of pessoas; track p.id) {
+          <option [ngValue]="p">{{p.nome}}</option>
+          }
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="nomeVacina" class="form-label">Nome da vacina</label>
+        <select class="form-control" name="nomeVacina" [(ngModel)]="vacinacao.vacina">
+          @for(v of vacinas; track v.id) {
+          <option [ngValue]="v">{{v.nome}}</option>
+          }
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="dataVacinacao">Data da vacinação</label>
+        <input type="date" class="form-control" name="dataVacinacao" [(ngModel)]="vacinacao.data">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="avaliacao">Avaliação</label>
+        <select name="avaliacao" class="form-control" [(ngModel)]="vacinacao.avaliacao">
+          <option value="1"> 1 </option>
+          <option value="2"> 2 </option>
+          <option value="3"> 3 </option>
+          <option value="4"> 4 </option>
+          <option value="5"> 5 </option>
+        </select>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <button type="submit" class="btn btn-outline-success col-md-3" (click)="salvarNovaVacinacao()">Salvar</button>
+          &nbsp;
+          <a class="btn btn-outline-dark col-md-3" role="button" aria-pressed="true" href="/vacinacoes"> Voltar</a>
+        </div>
+      </div>
+    </form>
+  </div>
+
+</div>
