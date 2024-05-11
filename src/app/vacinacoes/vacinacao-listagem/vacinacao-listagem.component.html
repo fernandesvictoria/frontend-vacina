@@ -1,0 +1,48 @@
+<div class="container">
+  <h3 class="mt-4">Vacinações Cadastradas</h3>
+
+  <div class="card">
+    <div class="card-body text-center">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Nome do vacinado</th>
+            <th>Nome da vacina</th>
+            <th>Data da vacinação</th>
+            <th>Avaliação</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (vacinacao of vacinacoes; track vacinacao)
+          {
+
+          <tr>
+            <td>{{vacinacao.pessoa?.nome}}</td>
+            <td>{{vacinacao.vacina.nome}}</td>
+            <td>{{vacinacao.data | date: 'dd/MM/yyyy'}}</td>
+            <td>{{vacinacao.avaliacao}}</td>
+            <td>
+              <div class="row">
+                <div>
+                  <button type="button" class="btn btn-outline-dark" (click)="editar(vacinacao.id)">
+                    <i class="bi bi-pencil"></i> Editar
+                  </button>
+                  &nbsp;
+                  <button type="button" class="btn btn-outline-danger" (click)="excluir(vacinacao.id)">
+                    <i class="bi bi-trash3"></i> Excluir
+                  </button>
+                </div>
+              </div>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+      <div>
+        <a class="btn btn-outline-dark" role="button" aria-pressed="true" href="/vacinacoes/detalhe">Cadastrar nova
+          vacinação</a>
+      </div>
+    </div>
+  </div>
+</div>

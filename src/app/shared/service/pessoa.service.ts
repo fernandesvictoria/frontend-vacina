@@ -23,5 +23,8 @@ export class PessoaService {
     return this.httpClient.get<Array<Pessoa>>(this.API + '/pesquisadores');
 
   }
+  consultarPessoaId(idPessoa: number): Observable<Pessoa>{
+    return this.httpClient.get<Pessoa>(this.API +'consultar/' + idPessoa);
+  }
 
 }

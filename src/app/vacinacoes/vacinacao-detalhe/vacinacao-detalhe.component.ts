@@ -26,6 +26,7 @@ export class VacinacaoDetalheComponent {
   ) {}
 
   ngOnInit(): void {
+    this.consultarPessoas();
     this.consultarVacinas();
   }
 

@@ -5,8 +5,6 @@ import { VacinaSeletor } from '../../shared/model/seletor/vacina.seletor';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 
-
-
 @Component({
   selector: 'app-vacina-listagem',
   templateUrl: './vacina-listagem.component.html',
@@ -16,7 +14,7 @@ export class VacinaListagemComponent implements OnInit {
   public vacinas: Vacina[] = [];
   public seletor: VacinaSeletor = new VacinaSeletor();
 
-  constructor(private VacinasService: VacinasService,private router: Router) {}
+  constructor(private VacinasService: VacinasService, private router: Router) {}
 
   ngOnInit(): void {
     this.consultarTodasVacinas();
@@ -50,7 +48,7 @@ export class VacinaListagemComponent implements OnInit {
   }
 
   public editar(idVacinaSelecionada: number): void {
-    this.router.navigate(['/vacinas/detalhe/', idVacinaSelecionada])
+    this.router.navigate(['/vacinas/detalhe/', idVacinaSelecionada]);
     //talves seja vacinaS ao invez de vacinA
   }
 
