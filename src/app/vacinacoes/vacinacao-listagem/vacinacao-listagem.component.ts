@@ -18,7 +18,8 @@ export class VacinacaoListagemComponent implements OnInit {
 
   constructor(
     private vacinacaoService: VacinacaoService,
-    private pessoaService: PessoaService,private router: Router
+    private pessoaService: PessoaService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -60,12 +61,9 @@ export class VacinacaoListagemComponent implements OnInit {
     );
   }
 
-
   public editar(idVacinacaoSelecionada: number): void {
     this.router.navigate(['/vacinacoes/detalhe/', idVacinacaoSelecionada]);
-
   }
-
 
   public excluir(id: number) {
     Swal.fire({
@@ -101,5 +99,4 @@ export class VacinacaoListagemComponent implements OnInit {
       }
     });
   }
-
 }

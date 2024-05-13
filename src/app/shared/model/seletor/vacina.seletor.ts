@@ -3,5 +3,6 @@ export class VacinaSeletor {
  pais: string;
  pesquisador: string;
  estagio: string;
-
+ limite: number;
+ pagina: number;
 }

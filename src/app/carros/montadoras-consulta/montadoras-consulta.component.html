@@ -1,0 +1,23 @@
+<div class="container">
+  <h2>Consultar Estoque de Montadoras</h2>
+
+  <div>
+    <div class="mb-3">
+      <label for="montadora" class="form-label">Selecionar Montadora</label>
+      <select class="form-control" name="nome" [compareWith]="compareById" [(ngModel)]="montadora.nome">
+        @for(m of montadoras; track m.id) {
+        <option [ngValue]=" m ">{{ m.nome }} ({{ m.paisFundacao }})</option>
+        }
+      </select>
+    </div>
+    <div class="col-md-6">
+      <button class="btn btn-outline-dark " (click)="consultarEstoque()">Consultar Estoque</button>
+    </div>
+
+
+
+  </div>
+  <br>
+
+
+</div>

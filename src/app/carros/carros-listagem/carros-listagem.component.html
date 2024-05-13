@@ -1,0 +1,82 @@
+<div>
+  <div class="card">
+    <div class="card-header" style="background-color: #91a2c6;">
+      <h5 class="text-white">Carros</h5>
+    </div>
+    <div class="card-body">
+      <form>
+        <div class="row">
+          <div class="col-md-12">
+            <label for="nome">Ano inicial:</label>
+            <input type="text" id="anoInicial" class="form-control" name="anoInicial"
+              [(ngModel)]="seletor.anoInicial">
+          </div>
+          <div class="col-md-12">
+            <label for="nome">Ano final:</label>
+            <input type="text" id="anoFinal" class="form-control" name="anoFinal"
+              [(ngModel)]="seletor.anoFinal">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-9">
+            <label for="nome">Modelo:</label>
+            <input type="text" id="modelo" class="form-control" name="modelo" [(ngModel)]="seletor.modelo">
+          </div>
+          <div class="col-md-3">
+            <label for="nome">&nbsp;</label>
+            <button type="button" class="form-control btn" style="background-color: #efd969; color: white;"
+              (click)="limpar()">
+              <i class="bi bi-trash"></i> Limpar
+            </button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-9">
+            <label for="nome">Marca:</label>
+            <input type="text" id="marca" class="form-control" name="marca" [(ngModel)]="seletor.nomeMarca">
+          </div>
+          <div class="col-md-3">
+            <label for="nome">&nbsp;</label>
+            <button type="button" class="form-control btn" style="background-color: #45842c; color: white;"
+              (click)="pesquisar()">
+              <i class="bi bi-search  "></i> Consultar
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead class="table-success">
+          <tr>
+            <th scope="col">Modelo</th>
+            <th scope="col">Placa</th>
+            <th scope="col">Montadora</th>
+            <th scope="col">Ano</th>
+            <th scope="col">Valor</th>
+
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+
+
+          <tr *ngFor="let carro of carros">
+            <td>{{carro.modelo }}</td>
+            <td>{{carro.placa}}</td>
+            <td>{{ carro.montadora.nome}}</td>
+            <td>{{ carro.ano }}</td>
+            <td>{{carro.valor|currency}}</td>
+            <td>
+            </td>
+          </tr>
+          <!-- // removi @for -->
+        </tbody>
+      </table>
+     <pre>{{ carros | json }}</pre>
+
+    </div>
+  </div>
+

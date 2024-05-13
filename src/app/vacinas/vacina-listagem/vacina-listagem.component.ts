@@ -13,11 +13,15 @@ import { Router } from '@angular/router';
 export class VacinaListagemComponent implements OnInit {
   public vacinas: Vacina[] = [];
   public seletor: VacinaSeletor = new VacinaSeletor();
+  public readonly TAMANHO_PAGINA: number = 5;
+  public totalPaginas: number = 0;
 
   constructor(private VacinasService: VacinasService, private router: Router) {}
 
   ngOnInit(): void {
     this.consultarTodasVacinas();
+    this.contarPaginas();
+    // consultar todas pessoas
   }
 
   private consultarTodasVacinas() {
@@ -86,4 +90,46 @@ export class VacinaListagemComponent implements OnInit {
       }
     });
   }
+
+  public contarPaginas() {
+    this.VacinasService.contarPaginas(this.seletor).subscribe(
+      (resultado) => {
+        this.totalPaginas = resultado;
+      },
+      (erro) => {
+        Swal.fire({
+          title: 'Atenção!',
+          text: 'Erro ao contar paginas: ' + erro.error.mensagem,
+          icon: 'error',
+        });
+      }
+    );
+  }
+
+  public atualizarPaginacao() {
+    this.contarPaginas();
+    this.pesquisar();
+  }
+
+  public avancarPagina() {
+    this.seletor.pagina = this.seletor.pagina + 1;
+    this.pesquisar();
+  }
+
+  public voltarPagina() {
+    this.seletor.pagina = this.seletor.pagina - 1;
+    this.pesquisar();
+  }
+
+  public irParaPagina(indice: number) {
+    this.seletor.pagina = indice;
+    this.pesquisar();
+  }
+
+  public criarArrayPaginas(): any[] {
+    return Array(this.totalPaginas)
+      .fill(0)
+      .map((x, i) => i + 1);
+  }
 }
+

@@ -83,13 +83,38 @@
         </tbody>
       </table>
       <div class="container py-10"> <!-- Ajuste o valor do padding aqui -->
-      <div class="text-center">
-        <a class="btn btn-outline-dark " role="button" aria-pressed="true" href="/vacinas/detalhe"> Cadastrar nova
-          vacina</a>
+        <div class="text-center">
+          <a class="btn btn-outline-dark " role="button" aria-pressed="true" href="/vacinas/detalhe"> Cadastrar nova
+            vacina</a>
+        </div>
       </div>
-    </div>
 
       <!-- <pre>{{ vacinas | json }}</pre> -->
 
+    </div>
+    <div class="row mt-3">
+      <nav>
+        <ul class="pagination justify-content-center">
+
+          <li class="page-item">
+            <button [disabled]="seletor.pagina == 1" class="page-link" (click)="voltarPagina()">
+              &laquo;
+            </button>
+
+          </li>
+
+          <li class="page-item" *ngFor="let indice of criarArrayPaginas()" (click)="irParaPagina(indice)">
+            <button class="page-link">{{indice}}</button>
+          </li>
+
+
+          <li class="page-item">
+            <button [disabled]="seletor.pagina == totalPaginas" class="page-link" (click)="avancarPagina()">
+              &raquo;
+            </button>
+          </li>
+          <!-- <pre>Pagina atual{{seletor.pagina}}</pre> -->
+        </ul>
+      </nav>
     </div>
   </div>

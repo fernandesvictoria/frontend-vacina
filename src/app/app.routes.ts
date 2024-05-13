@@ -1,4 +1,6 @@
+
 import { Routes } from '@angular/router';
+import { CarrosModule } from './carros/carros.module';
 
 export const routes: Routes = [
   // {path:'',redirectTo: 'vacinas',pathMatch:'full'},
@@ -12,4 +14,10 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./vacinacoes/vacinacoes.module').then((m) => m.VacinacoesModule),
   },
+
+  {
+    path: 'carros',
+    loadChildren:()=>
+      import('./carros/carros.module').then((m)=>m.CarrosModule),
+  }
 ];

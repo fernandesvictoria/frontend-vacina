@@ -39,4 +39,12 @@ export class VacinasService {
   editar(vacinaEditada: Vacina): Observable<boolean>{
     return this.httpClient.put<boolean>(this.API + '/alterar', vacinaEditada)
   }
+
+  contarTotalRegistros(seletor: VacinaSeletor): Observable<number> {
+    return this.httpClient.post<number>(this.API + '/contar', seletor)
+  }
+
+  contarPaginas(seletor: VacinaSeletor): Observable<number> {
+    return this.httpClient.post<number>(this.API + '/total-paginas', seletor)
+  }
 }
